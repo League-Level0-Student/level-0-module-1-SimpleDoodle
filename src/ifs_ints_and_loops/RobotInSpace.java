@@ -11,7 +11,7 @@ import org.jointheleague.graphical.robot.Robot;
 
 public class RobotInSpace implements KeyEventDispatcher {
 
-	Robot rob = new Robot("mini");
+	Robot walle = new Robot("mini");
 
 	/*
 	 * Make the Robot move around the screen when the arrow keys are pressed...
