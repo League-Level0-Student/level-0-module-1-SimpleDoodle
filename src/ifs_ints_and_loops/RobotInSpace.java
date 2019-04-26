@@ -6,6 +6,7 @@ import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JApplet;
+import javax.swing.JOptionPane;
 
 import org.jointheleague.graphical.robot.Robot;
 
@@ -24,21 +25,35 @@ public class RobotInSpace implements KeyEventDispatcher {
 	private void moveRobot(int keyPressed) throws InterruptedException {
 		// 2. Print out the keyPressed variable and write down the numbers for
 		// each arrow key
+		System.out.println(keyPressed);
 
 		// 3. If the up arrow is pressed, move the Robot up the screen.
+	if (keyPressed==87) {
+		walle.microMove(2);
+		walle.setAngle(0);
+	}
 
 		// 4. If the down arrow is pressed, move the Robot down.
-
+if (keyPressed==83) {
+	walle.microMove(2);
+	walle.setAngle(180);
+}
 		// 5. If the left arrow is pressed, make the Robot go left.
-
+if (keyPressed==65) {
+	walle.microMove(2);
+	walle.setAngle(270);
+}
 		// 6. If right is pressed, move the Robot right.
-
+if (keyPressed==68) {
+	walle.microMove(2);
+	walle.setAngle(90);
+}
 		// 7. Run your program and move the Robot to RD-2D for a surprise!
 	}
 
 	private void checkIfR2D2Found() throws Exception {
-		int robotLocationX = rob.getX();
-		int robotLocationY = rob.getY();
+		int robotLocationX = walle.getX();
+		int robotLocationY = walle.getY();
 
 		if (robotLocationX <= 7300 && robotLocationX >= 720 && robotLocationY >= 150 && robotLocationY <= 160)
 			playEureka();
@@ -51,8 +66,8 @@ public class RobotInSpace implements KeyEventDispatcher {
 	private void controlTheRobot() {
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(this);
 		Robot.setWindowImage("planet.jpg");
-		rob.penUp();
-		rob.setSpeed(10);
+		walle.penUp();
+		walle.setSpeed(10);
 	}
 
 	public boolean dispatchKeyEvent(KeyEvent e) {
